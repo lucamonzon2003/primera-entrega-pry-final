@@ -17,6 +17,9 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
+  "nodemonConfig": {
+    "ignore": ["/src/**/*.json"]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

@@ -6,8 +6,11 @@ const router = require('./routes/index.routes');
 
 const app = express()
 
-app.use(errorHandler);
-app.use('',router);
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.use('/api',router);
+
 
 app.get('/health', (_req, res, next) => {
     try{
@@ -19,5 +22,7 @@ app.get('/health', (_req, res, next) => {
         next(err)
     }
 });
+
+app.use(errorHandler);
 
 module.exports = app;
