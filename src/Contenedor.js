@@ -16,6 +16,7 @@ class Contenedor {
             producto.id = id
             dataP.push(producto);
             await fs.writeFile(`./src/storage/${this.name}.json`, JSON.stringify(dataP, null, 2));
+            return id
         } catch (err) {
             console.log(err);
         }
@@ -38,7 +39,7 @@ class Contenedor {
                 encoding: "utf-8",
             });
             let dataP = await JSON.parse(data);
-            let resultado = dataP.filter(producto => producto.id === id)
+            let resultado = dataP.find(producto => producto.id == id)
             return (resultado);
 
         } catch (err) {

@@ -4,6 +4,7 @@ require ('dotenv').config();
 const errorHandler = require('./middlewares/errorHandler');
 const router = require('./routes/index.routes');
 
+
 const app = express()
 
 app.use(express.json());

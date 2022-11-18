@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
+
+
 const Contenedor = require('../Contenedor')
 
 const Productos = new Contenedor('productos')
@@ -25,7 +28,10 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try{
         const { body } = req
-        await Productos.save(body)
+        body.timestamp = Date.now() / 1000
+        body.uuid = uuidv4()
+        await Productos.save(body);
+
         res.status(200).send('Guardado!')
     }catch(err){
         next(err);
